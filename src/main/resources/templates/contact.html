@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <style >
+        body{
+            color:#fff;
+            /*text-align:center;*/
+            background-image:url("../images/2.jpg");
+            background-size:cover;
+            background-position:center;
+            padding-top:100px;
+            padding-bottom:100px;
+
+
+
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <title>Dark Side of the Rainbow</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{'css/main.css'}">
+
+</head>
+<body>
+
+<div th:include="layout::header"></div>
+
+<section id="content">
+
+    <h1>Contact Us</h1>
+    <h4>All messages will be sent to our email id :  admin@darksideoftherainbow.com</h4>
+
+
+
+
+    <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}">
+        This is a danger alert—check it out!
+    </div>
+
+    <!--TODO CHANGE MADE HERE-->
+    <form ><!--method="post"--><!--action="/albums/add"-->
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter Full name"><!--aria-describedby="titleHelp" name="title"-->
+
+            <!--            <small id="titleHelp" class="form-text text-muted">What is the name of the album?</small>-->
+        </div>
+        <div class="form-group">
+            <label for="emailId">Customer's Email ID</label>
+            <input type="text" class="form-control" id="emailId" placeholder="Enter your email-id"><!--aria-describedby="artistHelp" name="artist"-->
+
+<!--            <small id="artistHelp" class="form-text text-muted">Who made the album?</small>-->
+        </div>
+
+        <!-- TODO .... ADD CODE HERE -->
+        <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" class="form-control" id="subject" placeholder="Enter email's subject"><!--aria-describedby="dateReleasedHelp" name="dateReleased"-->
+
+<!--            <small id="dateReleasedHelp" class="form-text text-muted">When was the album released?</small>-->
+        </div>
+        <div class="form-group">
+<!--            <label for="body">Message</label>-->
+            <textarea class="form-control" name="body" id="body" cols="165" rows="10"></textarea>
+<!--            <input type="email" class="form-control" id="genre" aria-describedby="genreHelp" name="genre">-->
+<!--                   placeholder="Enter album genre">-->
+<!--            <small id="genreHelp" class="form-text text-muted">What is the album's genre?</small>-->
+        </div>
+      <!--  <div class="form-group">
+            <label for="noOfTracks">No.of Tracks</label>
+            <input type="text" class="form-control" id="noOfTracks" aria-describedby="noOfTracksHelp" name="noOfTracks"
+                   placeholder="Enter no.of tracks in album ">
+            <small id="noOfTracksHelp" class="form-text text-muted">How many tracks are in the album?</small>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" class="form-control" id="price" aria-describedby="priceHelp" name="price">
+            <small id="priceHelp" class="form-text text-muted">MSRP for the album?</small>
+        </div>-->
+
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+
+
+</section>
+
+<div th:include="layout::footer"></div>
+
+</body>
+</html>

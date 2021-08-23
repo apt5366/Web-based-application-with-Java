@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <style>
+
+    body{
+    color:#fff;
+    /*text-align:center;*/
+    background-image:url("/images/001.jpg");
+    position: relative;
+    top: -100px;
+    background-size:cover;
+    background-position:center;
+    padding-top:100px;
+    padding-bottom:100px;
+
+
+
+    }
+
+
+    </style>
+
+    <meta charset="UTF-8">
+    <title>Dark Side of the Rainbow</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{'css/main.css'}">
+
+
+
+</head>
+<body>
+
+<div th:include="layout::header"></div>
+
+<section id="content">
+
+    <h1>Edit Album</h1>
+    <h2>Edit Existing Album in Database!</h2>
+
+    <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}">
+        This is a danger alert—check it out!
+    </div>
+    <form action="/albums/edit" method="post">
+        <div class="form-group">
+            <label for="title">Album Name</label>
+            <input type="text" class="form-control" id="title" aria-describedby="titleHelp" name="title"
+                   placeholder="Enter album name" th:value="${title}">
+            <small id="titleHelp" class="form-text text-muted">What is the name of the album?</small>
+        </div>
+        <div class="form-group">
+            <label for="artist">Artist</label>
+            <input type="text" class="form-control" id="artist" aria-describedby="artistHelp" name="artist"
+                   placeholder="Enter album's artist" th:value="${artist.getArtistName()}">
+            <small id="artistHelp" class="form-text text-muted">Who made the album?</small>
+        </div>
+
+        <!--TODO..... ADD..... CODE HERE -->
+        <!--TODO..... changed CODE HERE  type changed from text to date  ; th:value changed-->
+        <div class="form-group">
+            <label for="dateReleased">Date of Release</label>
+            <input type="text"  class="form-control" id="dateReleased" aria-describedby="dateReleasedHelp" name="dateReleased"
+                   placeholder="Enter album's date of release" th:value="${dateReleased}" > <!--th:value="${dateReleased.getYear()}-${dateReleased.getMonth()}-${dateReleased.getDate()}"-->
+            <small id="dateReleasedHelp" class="form-text text-muted">When was the album released?</small>
+        </div>
+        <div class="form-group">
+            <label for="genre">Genre</label>
+            <input type="text" class="form-control" id="genre" aria-describedby="genreHelp" name="genre"
+                   placeholder="Enter album's genre" th:value="${genre}">
+            <small id="genreHelp" class="form-text text-muted">What the album's genre?</small>
+        </div>
+        <div class="form-group">
+            <label for="noOfTracks">No.of Tracks</label>
+            <input type="text" class="form-control" id="noOfTracks" aria-describedby="noOfTracksHelp" name="noOfTracks"
+                   placeholder="Enter no.of tracks in the album" th:value="${noOfTracks}">
+            <small id="noOfTracksHelp" class="form-text text-muted">How many tracks are in the album?</small>
+        </div>
+
+
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" class="form-control" id="price" aria-describedby="priceHelp" name="price" th:value="${price}">
+            <small id="priceHelp" class="form-text text-muted">MSRP for the album?</small>
+        </div>
+
+        <input type="hidden" th:value="${albumID}" name="albumID" />
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</section>
+
+<div th:include="layout::footer"></div>
+
+</body>
+</html>

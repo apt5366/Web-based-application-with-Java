@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dark Side of the Rainbow</title>
+
+
+
+</head>
+<body >
+
+<th:block  th:fragment="header"> <!--th:style="'background: url(' + @{prism_rainbow.jpg} + ') repeat-y right; width: 6px;'"--> <!--th:bgcolor="${black}"-->
+    <header ><!--style="background-color:blue;"-->
+
+
+        <div class="jumbotron Header"  style="margin:0px; background-image: url('/images/horizontal_rainbow.jpg')" >
+<!--        <div class="jumbotron Header"  th:style="margin:0px; background-image: url('/images/horizontal_rainbow.jpg')" >-->
+
+
+            <!--        <div class="jumbotron Header" style="background-color:black ">-->
+
+
+<!-- TODO CHANGE LOGO FROM HERE............................................................................. -->
+
+<!--            <img  class="logo" align="center" src="images/portrait_aurora.gif" height="180" width="500" alt="DarkSIdeOfRainbow">-->
+            <h1 class="display-4"><font face="bookman" color="white"> Dark Side of the Rainbow</font></h1>
+<!--            <p class="lead">Welcome to Dark Side of the Rainbow</p>-->
+            <br><br>
+        </div>
+<div style="background-color: black"  >
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+
+            <a class="navbar-brand" href="/"> <img class="logo"  align="right" th:src="@{/images/slide_rainbow.gif}" alt="DarkSIdeOfRainbow" height="20" width="60" ><!--Dark Side of the Rainbow Brands--></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/"><font color="black">Home</font> <span class="sr-only">(current)</span></a>
+                    </li>
+                    <!--<li class="nav-item">
+                        <a class="nav-link" href="/about"><font color="black">About Us</font></a>
+                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact"><font color="black">Contact Us</font></a>
+                    </li>
+                   <!-- <li class="nav-item">
+                        <a class="nav-link" href="/careers"><font color="black">Careers</font></a>
+                    </li>-->
+                    <li class="nav-item">
+                        <!--TODO CHANGE MADE HERE album-> albums-->
+                        <p th:if="${#httpServletRequest.remoteUser}" th:inline="text"> <a class="nav-link" href="/albums/add"><font color="black">Add Album</font></a></p>
+                    </li>
+
+                    <!--TODO CHANGE MADE HERE ADDED MATERIAL-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/albums/view"><font color="black">View All Albums</font></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/console">H2 Database</a>
+                    </li>
+
+                </ul>
+
+
+                <form class="form-inline my-2 my-lg-0" action="/search" method="get">
+                    <input name="term" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+
+
+
+                <div style="float: right">
+                    <p th:if="${#httpServletRequest.remoteUser}" th:inline="text">[[${#httpServletRequest.remoteUser}]]<a href="/logout">(Logout)</a> </p>
+                    <a th:unless="${#httpServletRequest.remoteUser}" href="/login">Log In</a>
+                </div>
+            </div>
+
+        </nav>
+</div>
+    </header>
+</th:block>
+
+<th:block th:fragment="footer">
+    <footer>
+        <cite>&copy; 2019 - Dark Side of the Rainbow</cite>
+    </footer>
+</th:block>
+
+</body>
+</html>
